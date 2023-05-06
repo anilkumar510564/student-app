@@ -1,20 +1,19 @@
 import React from 'react'
 import { Header } from '../../components/Header'
+import { Student } from '../../components/Student'
 import { Footer } from '../../components/Footer'
-import { StudentList } from '../../components/StudentsList'
 
 /**
 * @author
-* @function Home
+* @function AddStudent
 **/
 
-export const Home = (props) => {
+export const AddStudent = (props) => {
   return(
-    
     <div>
-        <Header/>
-        <StudentList/>
-        <Footer/>
+      <Header/>
+      <Student/>
+      <Footer/>
     </div>
    )
 

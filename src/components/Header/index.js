@@ -2,6 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 
 import { NavLink ,Nav} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 /**
 * @author
 * @function Header
@@ -20,14 +21,14 @@ export const Header = (props) => {
                 <div className="collapse navbar-collapse" id="navbarText">
                   <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="/#">
+                      <Link className="nav-link" to="/">
                         Home
-                      </NavLink>
+                      </Link>
                     </li>
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="/#">
+                      <Link className="nav-link" to="/addstudent">
                         Add Student
-                      </NavLink>
+                      </Link>
                     </li>
                     <li className="nav-item">
                       <NavLink className="nav-link" to="/#">

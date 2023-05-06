@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { addStudent } from '../../actions'
+import { useDispatch } from 'react-redux'
 
 /**
 * @author
@@ -6,33 +8,55 @@ import React from 'react'
 **/
 
 export const Student = (props) => {
+  const [name,setName]=useState("")
+  const [age,setAge]=useState("")
+  const [fee,setFee]=useState("")
+
+
+  const dispatch=useDispatch()
+
+
+  const submitStudentForm = () => {
+    
+    const form = new FormData();
+    form.append("name", name);
+    form.append("age", age);
+    form.append("fee", fee);
+    
+    dispatch(addStudent(form));
+  };
   return(
     <div>
         <div className="col-md-6 m-auto">
           <form>
+
             <div className="form-group">
-              <label htmlFor="email">Email address</label>
-              <input type="email" name="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
-              <small id="emailHelp" className="form-text text-muted">
-                We'll never share your email with anyone else.
-              </small>
+              <label htmlFor="name">Name</label>
+              <input type="text" className="form-control" id="name"  placeholder="Enter the Name"
+               name="name"
+               value={name} 
+               onChange={(e)=>setName(e.target.value)}  />
             </div>
+
             <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" className="form-control" id="password" placeholder="Password" />
+              <label htmlFor="age">Age</label>
+              <input type="text"  className="form-control" id="age" placeholder="Enter the Age"
+               name="age"
+               value={age}
+               onChange={(e)=>setAge(e.target.value)}/>
             </div>
+          
             <div className="form-group">
-              <label htmlFor="confirmpassword">Password</label>
-              <input type="password" name="password2" className="form-control" id="confirmpassword" placeholder="Password Again" />
+              <label htmlFor="fee">Fee</label>
+              <input type="text"  className="form-control" id="fee" placeholder="Enter the Fee" 
+              name='fee'
+              value={fee}
+              onChange={(e)=>setFee(e.target.value)}/>
             </div>
-            <div className="form-check">
-              <input type="checkbox" name="checkbox" className="form-check-input" id="remember" />
-              <label className="form-check-label" htmlFor="remember">
-                I accept terms and conditions
-              </label>
-            </div>
-            <button type="submit" className="btn btn-primary float-right">
-              Register
+            
+            <button type="button" className="btn btn-primary float-right"
+            onClick={submitStudentForm}>
+              submit
             </button>
           </form>
         </div>

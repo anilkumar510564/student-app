@@ -21,11 +21,11 @@ export const addStudent = (form) => {
   };
 
 
-  const getStudents = () => {
+export  const getStudents = () => {
     return async (dispatch) => {
       try {
         dispatch({ type: studentsConstants.GET_ALL_STUDENTS_REQUEST });
-        const res = await axios.post(`/readAllStudents`);
+        const res = await axiosInstance.get(`/readAllStudents`);
         if (res.status === 200) {
           const { students } = res.data;
           dispatch({

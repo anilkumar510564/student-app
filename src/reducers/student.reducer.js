@@ -1,12 +1,12 @@
 import { studentsConstants } from "../actions/constants"
 
 
-const initailData={
+const student={
     error:null,
     loading:false,
     students:[],
 }
-export default (state=initailData,action)=>{
+export default (state=student,action)=>{
     switch(action.type){
         case studentsConstants.ADD_STUDENT_REQUEST:
             state={

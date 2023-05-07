@@ -9,16 +9,16 @@ import { getStudents } from '../../actions/student.action';
 **/
 
 export const StudentList = (props) => {
-  getStudents()
-  const student = useSelector((state) => state.student);
-  // const dispatch=useDispatch()
-  // useEffect(()=>{
-  //   dispatch(getStudents())
-  // },[])
   
-
+  const dispatch=useDispatch()
+  const student = useSelector((state) => state.student);
+  useEffect(()=>{
+     dispatch(getStudents())
+   
+  },[])
   return(
     <Table style={{ fontSize: 12 }} responsive="sm">
+     
         <thead>
           <tr>
             <th>#</th>

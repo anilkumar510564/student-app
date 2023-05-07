@@ -1,13 +1,14 @@
 
 
-import axiosInstance from "../helper";
+
+import axios from "../helper/axios";
 import { studentsConstants } from "./constants";
 
 export const addStudent = (form) => {
     return async (dispatch) => {
       try {
         dispatch({ type: studentsConstants.ADD_STUDENT_REQUEST });
-        const res = await axiosInstance.post(`createStudent`, form);
+        const res = await axios.post(`createStudent`, form);
         if (res.status === 201) {
           dispatch({ type: studentsConstants.ADD_STUDENT_SUCCESS });
         
@@ -22,16 +23,18 @@ export const addStudent = (form) => {
 
 
 export  const getStudents = () => {
-    return async (dispatch) => {
+    return async dispatch => {
       try {
         dispatch({ type: studentsConstants.GET_ALL_STUDENTS_REQUEST });
-        const res = await axiosInstance.get(`/readAllStudents`);
-        if (res.status === 200) {
-          const { students } = res.data;
+        const res = await axios.get(`/readAllStudents`);
+        if (res.status === 202) {
+          
+          const  students  = res.data;
           dispatch({
             type: studentsConstants.GET_ALL_STUDENTS_SUCCESS,
             payload: { students },
           });
+          console.log(students);
         } else {
           dispatch({ type: studentsConstants.GET_ALL_STUDENTS_FAILURE });
         }

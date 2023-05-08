@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStudents } from '../../actions/student.action';
+import { deleteStudentById, getStudents } from '../../actions/student.action';
 
 /**
 * @author
@@ -25,8 +25,7 @@ export const StudentList = (props) => {
             <th>Name</th>
             <th>Age</th>
             <th>Fee</th>
-            
-            
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -38,9 +37,25 @@ export const StudentList = (props) => {
                   <td>{student.name}</td>
                   <td>{student.age}</td>
                   <td>{student.fee}</td>
+                  <td>
+                  <button className='btn btn-primary'
+                      onClick={() => {
+                        const payload = {
+                          studentId: student.id,
+                        };
+                        dispatch(deleteStudentById(payload));
+                      }}   
+                    >
+                      del
+                    </button>
+                  </td>
                 </tr>
               ))
-            : null}
+            : <tr>
+                  
+            <td colSpan={4} className='text-center'>No Data</td>
+           
+          </tr>}
         </tbody>
       </Table>
    )

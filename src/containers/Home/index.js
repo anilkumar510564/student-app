@@ -1,21 +1,22 @@
-import React from 'react'
-import { Header } from '../../components/Header'
-import { Footer } from '../../components/Footer'
-import { StudentList } from '../../components/StudentsList'
+import React from "react";
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import { StudentList } from "../../components/StudentsList";
 
 /**
-* @author
-* @function Home
-**/
+ * @author
+ * @function Home
+ **/
 
 export const Home = (props) => {
-  return(
-    
+  return (
     <div>
-        <Header/>
-        <StudentList/>
-        <Footer/>
-    </div>
-   )
+      <Header />
+      <div class="container">
+        <StudentList />
+      </div>
 
- }
+      <Footer />
+    </div>
+  );
+};

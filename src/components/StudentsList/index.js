@@ -17,7 +17,7 @@ export const StudentList = (props) => {
    
   },[])
   return(
-    <Table style={{ fontSize: 12 }} responsive="sm">
+    <Table class = "table table-striped table-bordered" style={{ fontSize: 12 }} responsive="sm">
      
         <thead>
           <tr>

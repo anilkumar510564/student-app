@@ -5,10 +5,15 @@ import axios from "../helper/axios";
 import { studentsConstants } from "./constants";
 
 export const addStudent = (form) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json', // Set the Content-Type header here
+    },
+  }
     return async (dispatch) => {
       try {
         dispatch({ type: studentsConstants.ADD_STUDENT_REQUEST });
-        const res = await axios.post(`createStudent`, form);
+        const res = await axios.post(`createStudent`, form,config);
         if (res.status === 201) {
           dispatch({ type: studentsConstants.ADD_STUDENT_SUCCESS });
         
@@ -27,7 +32,7 @@ export  const getStudents = () => {
       try {
         dispatch({ type: studentsConstants.GET_ALL_STUDENTS_REQUEST });
         const res = await axios.get(`/readAllStudents`);
-        if (res.status === 202) {
+        if (res.status === 200) {
           
           const  students  = res.data;
           dispatch({
@@ -45,9 +50,14 @@ export  const getStudents = () => {
   };
 
   export const deleteStudentById = (payload) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json', // Set the Content-Type header here
+      },
+    }
     return async (dispatch) => {
       try {
-        const res = await axios.delete(`deleteStudent?studentId=${payload.studentId}` );
+        const res = await axios.delete(`deleteStudent?studentId=${payload.studentId}` ,config);
         dispatch({ type: studentsConstants.DELETE_STUDENT_BY_ID_REQUEST });
         if (res.status === 202) {
           dispatch({ type: studentsConstants.DELETE_STUDENT_BY_ID_SUCCESS });
